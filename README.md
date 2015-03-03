@@ -2,14 +2,14 @@
 
 Programming contests from around the world --- my solutions to the problems.
 
-* `oi`
-  Olimpiada Informatyczna
+* `oi`  
+  Olimpiada Informatyczna  
   http://oi.edu.pl/
-* `oig`
-  Olimpiada Informatyczna Gimnazjalistów
+* `oig`  
+  Olimpiada Informatyczna Gimnazjalistów  
   http://oig.edu.pl/
-* `potyczki-algorytmiczne`
-  Potyczki Algorytmiczne
+* `potyczki-algorytmiczne`  
+  Potyczki Algorytmiczne  
   http://potyczki.mimuw.edu.pl/
-* `usaco`
+* `usaco`  
   USA Computing Olympiad
