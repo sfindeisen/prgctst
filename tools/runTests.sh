@@ -1,4 +1,8 @@
 #!/bin/sh
+#
+# How to run - command line parameters:
+#
+# EXECUTABLE TESTDIR [MEMLIMIT]
 
 MYDIR=`dirname $0`
 timex=`which time`
