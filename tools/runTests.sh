@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # How to run - command line parameters:
 #
@@ -12,31 +12,52 @@ if [ ! -x "$timex" ] ; then
     exit 0 ;
 fi ;
 
+preview() {
+    bigtext=$1
+    header=`echo -e "$bigtext" | head -n 6` ;
+    pview=${header:0:400} ;
+    echo "$pview [...]" ;
+}
+
 runTest () {
     program=$1
     testin=$2
     # memlimit=$3
+    testout=`echo $testin | sed 's/\.in$/\.out/'`
+
+    if [ ! -f $testin ] ; then
+        echo "Error: reference IN file ($testin) does not exist! Unable to run the test case."
+        exit 0 ;
+    fi ;
+    if [ ! -f $testout ] ; then
+        echo "Error: reference OUT file ($testout) does not exist! Unable to run the test case."
+        exit 0 ;
+    fi ;
+
     testresout=`mktemp`
     testreserr=`mktemp`
-
-    testinbase=`echo $testin | sed 's/^\(.*\/\)//' | sed 's/\.in$//'`
-    testout=`echo $testin | sed 's/\.in$/\.out/'`
-    # testout=`dirname $testin`/$testinbase.out
-    # echo "==== $testin == $testinbase == $testout == $testresout == $testreserr"
     echo "==== Test: IN: $testin OUT: $testresout ERR: $testreserr"
+
     export program testin testresout testreserr
     extime=`$timex -f 'User: %U Sys: %S Real: %E RSS max: %M kB K: %K kB D: %D kB' /bin/sh $MYDIR/runTestCase.sh 2>&1`
 
     if [ -f "$testresout" ] ; then
-        d=`cmp $testresout $testout`
+        dcmp=`cmp $testout $testresout`
 
-        if [ -z "$d" ] ; then
-            echo "OK: $extime"
+        if [ -z "$dcmp" ] ; then
+            echo "OK: $extime" ;
             if [ -s "$testreserr" ] ; then
                 echo "Warning: STDERR present: $testreserr" ;
             fi ;
         else
-            echo "Error: $d" ;
+            ddiff=`diff -NaurEb $testout $testresout`
+            if [ -z "$ddiff" ] ; then
+                echo "OK: $extime" ;
+                echo "Warning: $dcmp" ;
+            else
+                echo "Error: bad result!" ;
+                preview "$ddiff" ;
+            fi ;
         fi ;
     else
         echo "Error: no output file!" ;
