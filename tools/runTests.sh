@@ -39,7 +39,7 @@ runTest () {
     echo "==== Test: IN: $testin OUT: $testresout ERR: $testreserr"
 
     export program testin testresout testreserr
-    extime=`$timex -f 'User: %U Sys: %S Real: %E RSS max: %M kB K: %K kB D: %D kB' /bin/sh $MYDIR/runTestCase.sh 2>&1`
+    extime=`$timex -f 'User: %U Sys: %S Real: %E RSS max: %M kB K: %K kB D: %D kB' /bin/bash $MYDIR/runTestCase.sh 2>&1`
 
     if [ -f "$testresout" ] ; then
         dcmp=`cmp $testout $testresout`
