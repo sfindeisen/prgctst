@@ -9,6 +9,10 @@ Programming contests from around the world --- my solutions to the problems.
 * `potyczki-algorytmiczne`: [Potyczki Algorytmiczne (Algorithmic Engagements)](http://potyczki.mimuw.edu.pl/)
 * `usaco`: USA Computing Olympiad
 
+## Coding guidelines
+
+`init.cpp` can be used as a starting point for C++ programs.
+
 ## TODO
 
 ### oi
