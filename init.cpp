@@ -26,7 +26,18 @@ typedef unsigned long long ULong;
 using namespace std;
 
 int main() {
-    std::ios_base::sync_with_stdio(0);
+    // By default, cin is tied to the standard output stream cout (see ios::tie), which
+    // indicates that cout's buffer is flushed (see ostream::flush) before each I/O
+    // operation performed on cin: http://www.cplusplus.com/reference/iostream/cin/ .
+    //
+    // Here we disable this behavior.
+    std::cin.tie(nullptr);
+    std::cout.tie(nullptr);
+
+    // Disable synchronization of all the iostream standard streams with their corresponding
+    // standard C streams: http://www.cplusplus.com/reference/ios/ios_base/sync_with_stdio/ .
+    std::ios_base::sync_with_stdio(false);
+
     return 0;
 }
 
