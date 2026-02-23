@@ -1,0 +1,169 @@
+#include <cmath>
+#include <iostream>
+#include <map>
+#include <set>
+
+typedef long long int32;
+
+using namespace std;
+
+class triple {
+public:
+    static const int mask_relPrime = 0x01;
+    int x;
+    int y;
+    int z;
+    int mask;
+};
+
+int gcd(int a, int b) {
+    if (0 == a)
+        return b;
+    if (0 == b)
+        return a;
+    if (a < b)
+        return gcd(b % a, a);
+    return gcd(a % b, a);
+}
+
+int main(char** args) {
+    const int maxN = 1000000;
+
+    cout << "sizeof(triple) = " << sizeof(triple) << endl;
+    cout << "sizeof(int) = " << sizeof(int) << endl;
+    cout << "sizeof(long) = " << sizeof(long) << endl;
+    cout << "sizeof(long long) = " << sizeof(long long) << endl;
+    cout << "sizeof(int32) = " << sizeof(int32) << endl;
+
+    //long n = 0;
+    //long relPrime = 0;
+
+    int32 sq[maxN + 1];
+    // map<int32,int> sq_rev;
+    for (int i = 0; i <= maxN; i++) {
+        int32 i2 = ((int32) i) * ((int32) i);
+        sq[i] = i2;
+        // sq_rev[i2] = i;
+    }
+
+    cout << "kwadraty policzone" << endl;
+
+//     long gc[maxN + 1][maxN + 1];
+//     for (long i = 0; i <= maxN; i++)
+//         for (long j = i + 1; j <= maxN; j++)
+//             gc[i][j] = gcd(i, j);
+//     cout << "gcd policzone" << endl;
+
+    int tripleCount = 0;
+
+//     for (int i = 1; i <= maxN; i++) {
+//         for (int j = i + 1; j <= maxN; j++) {
+//             int32 i2 = sq[i];
+//             int32 j2 = sq[j];
+//             int32 k2 = i2 + j2;
+// 
+//             if (1 == sq_rev.count(k2)) {
+//                 int k = sq_rev[k2];
+//                 cout << (++tripleCount) << " MATCH: (" << i << ", " << j << ", " << k << "): " << i2 << " + " << j2 << " = " << k2 << endl;
+//             }
+//         }
+//     }
+
+    for (int k = 1; k <= maxN; k++) {
+            int32 k2 = sq[k];
+            int i = 1;
+            int j = k - 1;
+            while ((i < j) && (1 <= j)) {
+                int32 sum = sq[i] + sq[j];
+                if (sum == k2) {
+
+                    tripleCount++;
+                    if (0 == ((tripleCount) % 1000)) {
+                        cout << (tripleCount) << " MATCH: (" << i << ", " << j << ", " << k << "): " << sq[i] << " + " << sq[j] << " = " << k2 << endl;
+                        cout.flush();
+                    }
+                    //s.insert(i);
+                    //s.insert(j);
+                    //s.insert(k);
+
+                    //if ((1 == gcd(i, j)) && (1 == gcd(j, k)) && (1 == gcd(i, k)))
+                    //    relPrime++;
+
+                    i++;
+                    j--;
+                } else if (sum < k2)
+                    i++;
+                else if (sum > k2)
+                    j--;
+            }
+        }
+
+    return 0;
+
+//     while (! cin.eof()) {
+//         cin >> n;
+//         if (cin.bad() || cin.fail())
+//             return 0;
+// 
+//         cout << "---- n = " << n << endl;
+// 
+//         n2 = n * n;
+//         s.clear();
+//         relPrime = 0;
+// 
+//         for (int k = n; 1 <= k; k--) {
+//             int k2 = sq[k];
+//             int i = 1;
+//             int j = k - 1;
+//             while ((i < j) && (1 <= j)) {
+//                 int sum = sq[i] + sq[j];
+//                 if (sum == k2) {
+//                     s.insert(i);
+//                     s.insert(j);
+//                     s.insert(k);
+// 
+//                     if ((1 == gcd(i, j)) && (1 == gcd(j, k)) && (1 == gcd(i, k)))
+//                         relPrime++;
+// 
+//                     i++;
+//                     j--;
+//                 } else if (sum < k2)
+//                     i++;
+//                 else if (sum > k2)
+//                     j--;
+//             }
+//         }
+
+//         bool ok = true;
+// 
+//         for (long i = 1; ok && (i <= n); i++) {
+//             long i2 = i * i;
+//             for (long j = i + 1; j <= n; j++) {
+//                 long j2 = j * j;
+//                 long two = i2 + j2;
+//                 if (n2 < two) {
+//                     // cout << "break on i=" << i << ", j=" << j << endl;
+//                     if (j == i + 1)
+//                         ok = false;
+//                     break;
+//                 }
+// 
+//                 long k = (long) sqrt(two);
+//                 if ((j < k) && ((k * k) == two)) {
+//                     // cout << "  " << i << " " << j << " " << k << endl;
+//                     s.insert(i);
+//                     s.insert(j);
+//                     s.insert(k);
+// 
+//                     if ((1 == gcd(i, j)) && (1 == gcd(j, k)) && (1 == gcd(i, k)))
+//                         relPrime++;
+//                 }
+//             }
+//         }
+
+        //cout << "relPrime triples: " << relPrime << " uczestniczy liczb: " << (s.size()) << " (" << (100 * s.size() / n) << "%)" << endl;
+       // cout << relPrime << ' ' << (n - s.size()) << endl;
+    //}
+
+    //return 0;
+}

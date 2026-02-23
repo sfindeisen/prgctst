@@ -1,0 +1,20 @@
+#include <cmath>
+#include <iostream>
+
+int main(char** args) {
+
+    const int maxN = 1000000;
+
+    while (! cin.eof()) {
+        cin >> n;
+        if (cin.bad() || cin.fail())
+            return 0;
+
+        cout << "---- n = " << n << endl;
+
+
+        cout << relPrime << ' ' << (n - s.size()) << endl;
+    }
+
+    return 0;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head><!--Converted with LaTeX2HTML 96.1 (Feb 5, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds --><title>Fermat vs. Pythagoras</title>
+
+
+
+
+<meta name="description" content="Fermat vs. Pythagoras">
+<meta name="keywords" content="htmlatex">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<link rel="STYLESHEET" href="106_files/htmlatex.css"></head><body bgcolor="#ffffff" lang="EN">
+ <h1><br clear="all"><center><table bgcolor="#0060f0"><tbody><tr><td><b><font color="#c0ffff" size="5">&nbsp;<a name="SECTION0001000000000000000000">Fermat vs. Pythagoras</a></font>&nbsp;</b></td></tr></tbody></table></center></h1>
+<p>
+</p><h2><font color="#0070e8"><a name="SECTION0001001000000000000000">Background</a></font></h2>
+<p>
+Computer generated and assisted proofs and verification occupy a small
+niche in the realm of Computer Science.  The first proof of the
+four-color problem was completed with the assistance of a computer
+program and current efforts in verification have succeeded in verifying
+the translation of high-level code down to the chip level.
+</p><p>
+This problem deals with computing quantities relating to part of
+Fermat's Last Theorem: that there are no integer solutions of  <img alt="tex2html_wrap_inline29" src="106_files/106img1.gif" align="middle" height="26" width="94">  for <i>n</i> &gt; 2.
+</p><p>
+</p><h2><font color="#0070e8"><a name="SECTION0001002000000000000000">The Problem</a></font></h2>
+<p>
+Given a positive integer <i>N</i>, you are to write a program that computes two
+quantities regarding the solution of
+</p><p> <img alt="displaymath22" src="106_files/106img2.gif" align="bottom" height="19" width="296"> </p><p>
+where <i>x</i>, <i>y</i>, and <i>z</i> are constrained to be positive integers
+less than or equal to <i>N</i>.   You
+are to compute the number of triples (<i>x</i>,<i>y</i>,<i>z</i>) such that <i>x</i><per>&lt;</per><i>y</i><per>&lt;</per>
+<i>z</i>, and they are relatively prime, i.e., have no common divisor larger than
+1.  You are also to compute the number of values  <img alt="tex2html_wrap_inline51" src="106_files/106img3.gif" align="middle" height="25" width="78">  such that
+<i>p</i> is not part of any triple (not just relatively prime triples).
+</p><p>
+</p><h2><font color="#0070e8"><a name="SECTION0001003000000000000000">The Input</a></font></h2>
+<p>
+The input consists of a sequence of positive
+integers, one per line.  Each integer
+in the input file will be less than or equal to 1,000,000.  Input is
+terminated by end-of-file.
+</p><p>
+</p><h2><font color="#0070e8"><a name="SECTION0001004000000000000000">The Output</a></font></h2>
+<p>
+For each integer <i>N</i> in the input file print two integers separated by a
+space.  The first integer is the number of relatively prime triples
+(such that each component of the triple is  <img alt="tex2html_wrap_inline57" src="106_files/106img4.gif" align="middle" height="26" width="33"> ).  The second number
+is the number of positive
+integers  <img alt="tex2html_wrap_inline57" src="106_files/106img4.gif" align="middle" height="26" width="33">  that are not part of any triple whose
+components are all  <img alt="tex2html_wrap_inline57" src="106_files/106img4.gif" align="middle" height="26" width="33"> .  There should be one output line for each
+input line.
+</p><p>
+</p><h2><font color="#0070e8"><a name="SECTION0001005000000000000000">Sample Input</a></font></h2>
+<p>
+</p><pre>10
+25
+100</pre>
+<p>
+</p><h2><font color="#0070e8"><a name="SECTION0001006000000000000000">Sample Output</a></font></h2>
+<p>
+</p><pre>1 4
+4 9
+16 27</pre>
+<p>
+</p></body></html>

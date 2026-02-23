@@ -1,0 +1,80 @@
+#include <cmath>
+#include <iostream>
+#include <map>
+#include <set>
+
+typedef long long int32;
+
+using namespace std;
+
+class triple {
+public:
+    static const int mask_relPrime = 0x01;
+    int x;
+    int y;
+    int z;
+    int mask;
+};
+
+int gcd(int a, int b) {
+    if (0 == a)
+        return b;
+    if (0 == b)
+        return a;
+    if (a < b)
+        return gcd(b % a, a);
+    return gcd(a % b, a);
+}
+
+int main(char** args) {
+    const int maxN = 1000000;
+
+    cout << "sizeof(triple) = " << sizeof(triple) << endl;
+    cout << "sizeof(int) = " << sizeof(int) << endl;
+    cout << "sizeof(long) = " << sizeof(long) << endl;
+    cout << "sizeof(long long) = " << sizeof(long long) << endl;
+    cout << "sizeof(int32) = " << sizeof(int32) << endl;
+
+    //long n = 0;
+    //long relPrime = 0;
+
+    int32 sq[maxN + 1];
+    map<int32,int> sq_rev;
+    for (int i = 0; i <= maxN; i++) {
+        int32 i2 = ((int32) i) * ((int32) i);
+        sq[i] = i2;
+        sq_rev[i2] = i;
+    }
+
+    cout << "kwadraty policzone" << endl;
+
+//     long gc[maxN + 1][maxN + 1];
+//     for (long i = 0; i <= maxN; i++)
+//         for (long j = i + 1; j <= maxN; j++)
+//             gc[i][j] = gcd(i, j);
+//     cout << "gcd policzone" << endl;
+
+    int tripleCount = 0;
+
+    for (int i = 1; i <= maxN; i++) {
+        for (int j = i + 1; j <= maxN; j++) {
+            if (1 != gcd(i, j))
+                continue;
+
+            int32 i2 = sq[i];
+            int32 j2 = sq[j];
+            int32 k2 = i2 + j2;
+
+            if (1 == sq_rev.count(k2)) {
+                int k = sq_rev[k2];
+                if ((1 == gcd(i, k)) && (1 == gcd(j, k))) {
+                    tripleCount++;
+                    if (0 == (tripleCount % 100))
+                        cout << (tripleCount) << " MATCH: (" << i << ", " << j << ", " << k << "): " << i2 << " + " << j2 << " = " << k2 << endl;
+                }
+            }
+        }
+    }
+
+    return 0;
+}
