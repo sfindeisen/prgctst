@@ -2,6 +2,7 @@
 
 Programming contests from around the world --- my solutions to the problems.
 
+* `acm.uva.es`: UVa Online Judge --- Universidad de Valladolid
 * `codility`: Codility
 * `ioi`: International Olympiad in Informatics
 * `oi`: [Olimpiada Informatyczna (Polish Computing Olympiad)](http://oi.edu.pl/)
