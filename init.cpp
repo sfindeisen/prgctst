@@ -3,10 +3,10 @@
 #include <utility>
 #include <vector>
 
-typedef int Int;
-typedef unsigned int UInt;
-typedef long long Long;
-typedef unsigned long long ULong;
+typedef unsigned int uint;
+typedef unsigned long ulong;
+typedef long long llong;
+typedef unsigned long long ullong;
 
 // typedef std::vector<Int> VInt;
 // typedef std::vector<Long> VLong;
